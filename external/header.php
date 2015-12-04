@@ -130,7 +130,7 @@ register_shutdown_function(
         $time = array_key_exists('REQUEST_TIME', $_SERVER)
             ? $_SERVER['REQUEST_TIME']
             : time();
-        $requestTimeFloat = explode('.', $_SERVER['REQUEST_TIME_FLOAT']);
+        $requestTimeFloat = explode('.', str_replace(',', '.', strval($_SERVER['REQUEST_TIME_FLOAT'])));
         if (!isset($requestTimeFloat[1])) {
             $requestTimeFloat[1] = 0;
         }
